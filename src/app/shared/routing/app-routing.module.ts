@@ -22,7 +22,7 @@ import { from } from 'rxjs';
 
 // Include route guard in routes array
 const routes: Routes = [
-  { path: '', redirectTo: '/register-user', pathMatch: 'full'},
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard]},
   {path:  'log-in', component:LogInComponent, canActivate:[SecureInnerPagesGuard],},
   { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard]},

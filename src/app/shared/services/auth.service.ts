@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User, Roles} from '../services/user';
+import { User, Roles} from '../models/user';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -136,7 +136,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
-      photoURL: user.photoURL,
+      // photoURL: user.photoURL,
       emailVerified: user.emailVerified,
       roles: {
       

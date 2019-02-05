@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { User, Roles} from '../services/user';
+import { User, Roles} from '../models/user';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
@@ -54,7 +54,7 @@ export class AuthService {
         //  this.SetUserData('user');
         //  this. checkAuthorization(JSON.parse('user'),JSON.parse ('allowedRoles'))
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['user-profile']);
         
         });
         this.SetUserData(result.user);

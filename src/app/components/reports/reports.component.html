@@ -1,11 +1,19 @@
-<tr-viewer 
-    [containerStyle]="viewerContainerStyle"
-    [serviceUrl]="'http://myrestserviceurl/api/reports'"
-    [reportSource]="{
-        report: 'Class Attendance.trdp',
-        parameters: {}
-    }"
-    [viewMode]="'INTERACTIVE'"
-    [scaleMode]="'SPECIFIC'"
-    [scale]="1.0">
-</tr-viewer>
+<div class="table-responsive" *ngIf="studentCheckins">
+    <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
+      <thead>
+        <tr>
+          <th scope="col">Admission</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- *ngFor loop iterates over checkin array and fetch the checkin's data -->
+        <!-- paginate pipe will add pagination in checkin's list, it won't show if items are less then 7 -->
+        <button type="button" (onclick)="getAttendance()" class="btn btn-success"></button>
+        <tr >
+          <th scope="row">{{checkin.admissionNumber}}</th>
+          <td>{{checkin.firstName}} {{checkin.timestamp.toDate() | date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

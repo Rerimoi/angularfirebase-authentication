@@ -24,7 +24,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
+import { environment } from '../environments/environment'
 
 import { AuthService } from './shared/services/auth.service';
 import { AddLecturerCheckinComponent } from './components/add-lecturer-checkin/add-lecturer-checkin.component';

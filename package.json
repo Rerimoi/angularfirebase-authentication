@@ -28,19 +28,21 @@
     "geofire": "^4.1.2",
     "geofirestore": "^3.1.0",
     "geofirex": "0.0.6",
-    "jquery": "^1.12.4",
+    "jquery": "^3.3.1",
     "ngx-pagination": "^3.2.1",
     "ngx-toastr": "^9.1.1",
-    "rxjs": "^6.3.3",
+    "popper.js": "^1.14.7",
+    "rxjs": "^6.4.0",
     "tslib": "^1.9.0",
+    "wijmo": "^5.20183.568",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.13.0",
-    "@angular/cli": "^7.3.0",
-    "@angular/compiler-cli": "~7.0.0",
-    "@angular/language-service": "~7.0.0",
-    "@types/jasmine": "~2.8.8",
+    "@angular/cli": "~7.3.0",
+    "@angular/compiler-cli": "^7.2.3",
+    "@angular/language-service": "~7.2.3",
+    "@types/jasmine": "^2.8.16",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
@@ -51,9 +53,9 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.4.0",
+    "protractor": "^5.4.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.2.4"
   }
 }

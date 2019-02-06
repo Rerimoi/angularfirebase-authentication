@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StudentCheckin } from './student-checkin';
+// import { StudentCheckin } from './student-checkin';
 import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebaseApp from 'firebase/app';
 import * as geofirex from 'geofirex';

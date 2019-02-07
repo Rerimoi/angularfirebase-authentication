@@ -2,7 +2,7 @@ export interface User {
    uid: string;
    email: string;
    displayName: string;
-   // photoURL: string;
+   photoURL: string;
    emailVerified: boolean;
     roles: Roles; //how do i import it to be used by User
 }

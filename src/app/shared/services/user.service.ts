@@ -13,16 +13,16 @@ export class UserService {
   user: Observable<User[]>;
   // roles: Observable<Roles[]>;
 
-  constructor(private firestore: AngularFirestore) {
-    this.user = this.firestore.collection<User>('user').snapshotChanges().pipe(
-      // map(actions => actions.map(a => {
-      //   const data = a.payload.doc.data() as User;
-      //   const id = a.payload.doc.id;
-      //   return { id, ...data };
-      // }))
+  constructor(private afs: AngularFirestore) {
+    this.user = this.afs.collection('user').snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as User;
+        const uid = a.payload.doc.id;
+        return { uid, ...data };
+      }))
     )
   }
-
+  
    getUser(){
      return this.user;
    }

@@ -32,6 +32,7 @@ import { EditLecturerCheckinComponent } from './components/edit-lecturer-checkin
 import { LecturerCheckinListComponent } from './components/lecturer-checkin-list/lecturer-checkin-list.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UserService } from './shared/services/user.service'
 
 // NGX Pagination
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -76,7 +77,7 @@ import { from } from 'rxjs';
     }),
     NgxPaginationModule  // NGX pagination module
   ],
-  providers: [AuthService],
+  providers: [AuthService, UserService],
   bootstrap: [AppComponent]
 })
 

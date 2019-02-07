@@ -1,4 +1,6 @@
-<div class="table-responsive" *ngIf="studentCheckins">
+<!-- Showing checkins data -->
+<div class="table-responsive" *ngIf="checkins" >
+  <h2>Students details</h2>
     <table class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
       <thead>
         <tr>
@@ -9,10 +11,9 @@
       <tbody>
         <!-- *ngFor loop iterates over checkin array and fetch the checkin's data -->
         <!-- paginate pipe will add pagination in checkin's list, it won't show if items are less then 7 -->
-        <button type="button" (onclick)="getAttendance()" class="btn btn-success"></button>
-        <tr >
-          <th scope="row">{{checkin.admissionNumber}}</th>
-          <td>{{checkin.firstName}} {{checkin.timestamp.toDate() | date}}</td>
+        <tr *ngFor="let checkin of checkins ">
+          <td>{{checkin.admissionNumber}}</td>
+          <td> {{checkin.timestamp.toDate() | date}}</td>
         </tr>
       </tbody>
     </table>

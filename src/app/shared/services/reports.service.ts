@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ReportsComponent } from 'src/app/components/reports/reports.component';
+// import { AngularFireList, AngularFireObject } from '@angular/fire/database';
+// import { ReportsComponent } from 'src/app/components/reports/reports.component';
+import { Observable } from 'rxjs';
+
 
 
 
@@ -9,14 +12,19 @@ import { ReportsComponent } from 'src/app/components/reports/reports.component';
   providedIn: 'root'
 })
 export class ReportsService {
+  checkin:Observable<any> // Reference to StudentCheckin data list, its an Observable
+  
+ 
+  
+
  
   // Inject AngularFireDatabase Dependency in Constructor
   constructor(private firestore: AngularFirestore,
-    public reports: ReportsComponent,
-    public studentCheckin) { }
+    ) { }
 
-  Getstudents(id) {
-    return this.firestore.collection('student-checkin').doc(id);
+
+  Getstudents() {
+    return this.firestore.collection('student-checkin');
   }
 }
 

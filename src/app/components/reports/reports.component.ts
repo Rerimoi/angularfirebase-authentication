@@ -9,28 +9,18 @@ import { ReportsService } from 'src/app/shared/services/reports.service';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  // viewerContainerStyle = {
-  //   position: 'relative',
-  //   width: '1000px',
-  //   height: '800px',
-  //   ['font-family']: 'ms sans serif'
-  // };
-
-
-
   constructor( private router: Router,
-    public StudentCheckin,
-    public ReportsService) { }
+    public reportService:ReportsService) { }
+   
+   
+    checkins=[];
 
-getAttendance(){
-   this.ReportsService.GetStudents();
-}
     ngOnInit(){ 
-      this.getAttendance();  
-    }
-    }
+      this.reportService.Getstudents().valueChanges().subscribe((data:any) => {
+
+        this.checkins=data
+    });
+   }
 
     
-
-    
-
+  }

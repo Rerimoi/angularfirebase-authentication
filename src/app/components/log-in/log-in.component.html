@@ -9,25 +9,27 @@
     </div> -->
 
     <div class="authBlock">
-      <h3>Welcome Back</h3>
+      <h3>Welcome Back</h3>  <br> <br>
 
        <!-- <div class="formGroup"><span>Enter your Role</span>
 
         <input type="text" class="formControl" placeholder="Role" #roles required >
       </div> -->
       
-      <div class="formGroup"><span>Enter your Email Address</span>
+      <div class="formGroup"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter your Email Address:</span><br>
         <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
-      </div>
+      </div>  <br> <br>
 
-      <div class="formGroup"><span>Enter your password</span>
+      <div class="formGroup"><span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enter your password:</span><br>
         <input type="password" class="formControl" placeholder="Password" #userPwd required>
       </div>
+      <br> <br>
 
       <div class="formGroup">
         <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(email, password)"class="redirect" routerLink="/user-profile">
       </div>
 
-       <div class="formGroup">
-         <input type="button" class="btn btnPrimary" value="forgot password?" (click)="authService.ForgotPassword(passwordResetEmail)" class="redirect" routerLink="#">
+       <div class="formGroup"> <br>
+        
+         <input type="button" class="btn btnPrimary" value="forgot password?" (click)="authService.ForgotPassword(passwordResetEmail)" class="redirect">
       </div>

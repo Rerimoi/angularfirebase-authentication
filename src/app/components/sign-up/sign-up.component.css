@@ -1,0 +1,71 @@
+.authBlock h3 {
+   
+    padding: 15px 15px;
+    font-size: 25px;
+    font-weight: 300;
+    color:blue;
+    text-align:center;
+    background: whitesmoke;
+   
+  }
+
+.displayTable {
+    background: #eceeee;
+    border: 1px solid #42464b;
+    border-radius: 6px;
+    height: 700px;
+    margin: 20px auto 0;
+    width: 500px;
+    position: relative;
+  }
+  input[type="password"],
+   input[type="text"],
+   input[type="email"] {
+    background: url('http://i.minus.com/ibhqW9Buanohx2.png') center left no-repeat, linear-gradient(top, #d6d7d7, #dee0e0); 
+    border: 1px solid #a1a3a3;
+    border-radius: 4px;
+    box-shadow: 0 1px #fff;
+    box-sizing: border-box;
+    color: #696363;
+    height: 39px;
+    margin: 31px 0 0 29px;
+    padding: 20px 25px;
+    transition: box-shadow 0.3s;
+    width: 90%;
+  }
+  input[type="password"]:focus, input[type="text"]:focus {
+    box-shadow: 0 0 4px 1px rgba(55, 166, 155, 0.3);
+    outline: 0;
+  }
+  .show-password {
+    display: block;
+    height: 16px;
+    margin: 26px 0 0 28px;
+    width: 87px;
+  }
+   .roles {width: 90%;
+    height: 39px;
+    margin: 20px 0 0 29px;
+    padding: 20px 25px;
+    font-size: 15px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+  }
+  .redirect{
+    width: 80%;
+    height: 60px;
+    margin: 31px 0 0 29px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    background: blue;
+    border: 0;
+    border-radius: 5px;
+    cursor: pointer; 
+    outline:0;
+    padding: 20px 25px;
+
+  }

@@ -1,11 +1,16 @@
+
+<html>
+  <head></head>
+  <body style="background-color:#E6E6FA">.
+  
 <div class="displayTable">
   <div class="displayTableCell">
 
-    <div class="px-logo">
+    <!-- <div class="px-logo">
       <a href="https://www.positronx.io" target="_blank">
         <img src="https://www.positronx.io/wp-content/themes/positronx/img/logo-positronx-white.svg" alt="positronX.io - Learn Full Stack Development">
       </a>
-    </div>
+    </div> -->
 
     <div class="authBlock">
       <h3>Sign Up with Email</h3>
@@ -28,10 +33,10 @@
 
       <div class="formGroup">
         <!-- <input type="text" class="formControl" placeholder="Role" #userRole required> -->
-        <select class="rolers" >
+        <select class="roles" >
           <option value="null" placeholder="enter user roles here" ></option>
-          <option ngvalue="true">student</option>
-          <option ngvalue="true">lectuter</option>
+          <option ngvalue="true">Student</option>
+          <option ngvalue="true">Lecturer</option>
         </select>
       </div>
       
@@ -39,24 +44,27 @@
       <div class="formGroup">
         <input type="button" class="btn btnPrimary" value="Sign Up" (click)="authService.SignUp(userEmail.value, userPwd.value)" class="redirect" routerLink="/verify-email-address">
       </div>
+      <br>
 
-      <div class="formGroup">
+      <!-- <div class="formGroup">
         <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
+      </div> -->
+<br>
       <!-- Continue with Google -->
       <div class="formGroup">
         <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
-          <i class="fab fa-google-plus-g"></i>
-          Continue with Google
+          <i class="fab fa-google-plus-g"></i> <p style="text-align:centre;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Continue with Google </p>
         </button>
       </div>
       
     </div>
+    <br>
 
     <div class="redirectToLogin">
-     <span>Already have an account? <span class="redirect" routerLink="/log-in">Log In</span></span>
+     <span>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;        Already have an account? <span class="direct" routerLink="/log-in">Log In</span></span>
     </div>
   </div>
 
 </div>
+</body>
+</html>

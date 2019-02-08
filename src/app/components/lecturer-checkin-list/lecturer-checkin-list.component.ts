@@ -4,14 +4,27 @@ import { ToastrService } from 'ngx-toastr';
 
 import { LecturerCheckinService } from 'src/app/shared/services/lecturer-checkin.service';
 import { LecturerCheckin } from 'src/app/shared/services/lecturer-checkin';
-import { DocumentChangeAction } from '@angular/fire/firestore';
-
+import { DocumentChangeAction, AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/shared/models/user';
+import { AuthService } from 'src/app/shared/services/auth.service';
+ 
 @Component({
   selector: 'app-lecturer-checkin-list',
   templateUrl: './lecturer-checkin-list.component.html',
   styleUrls: ['./lecturer-checkin-list.component.css']
 })
 export class LecturerCheckinListComponent implements OnInit {
+  public get afs(): AngularFirestore {
+    return this._afs;
+  }
+  public set afs(value: AngularFirestore) {
+    this._afs = value;
+  }
+
+  postRef:AngularFirestoreDocument<any>;
+  post$:Observable<any>;
+  user:User;
 
   p = 1;                      // Fix for AOT compilation error for NGX pagination
   LecturerCheckin: LecturerCheckin[];                 // Save checkins data in checkin's array.
@@ -22,11 +35,16 @@ export class LecturerCheckinListComponent implements OnInit {
 
   constructor(
     public crudApi: LecturerCheckinService, // Inject checkin CRUD services in constructor.
-    public toastr: ToastrService // Toastr service for alert message
-  ) { }
+    public toastr: ToastrService, // Toastr service for alert message
+    private _afs: AngularFirestore, public auth:AuthService){
+
+    }
+  
 
 
   ngOnInit() {
+    this.postRef=this.afs.doc('')
+
     this.dataState(); // Initialize checkin's list, when component is ready
     const s = this.crudApi.GetcheckinsList();
     this.LecturerCheckin = [];

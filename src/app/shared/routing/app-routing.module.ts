@@ -18,23 +18,24 @@ import { EditLecturerCheckinComponent } from '../../components/edit-lecturer-che
 import { LecturerCheckinListComponent } from '../../components/lecturer-checkin-list/lecturer-checkin-list.component';
 import { LecturerCheckinViewComponent } from 'src/app/components/lecturer-checkin-view/lecturer-checkin-view.component';
 import { LogInComponent } from 'src/app/components/log-in/log-in.component';
-import { from } from 'rxjs';
+import { AdminGuard } from 'src/app/components/admin.guard';
+import { CanActivate } from '@angular/router/src/utils/preactivation';
 
 // Include route guard in routes array
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
-  { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard]},
-  {path:  'log-in', component:LogInComponent, canActivate:[SecureInnerPagesGuard],},
-  { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard]},
-  { path: 'dashboard', component: DashboardComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'user-profile', component: UserProfileComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'add-lecturer-checkin', component: AddLecturerCheckinComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'edit-lecturer-checkin/:id', component: EditLecturerCheckinComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'view-lecturer-checkin/:id', component: LecturerCheckinViewComponent, canActivate: [SecureInnerPagesGuard] },
-  { path: 'view-lecturer-checkins', component: LecturerCheckinListComponent, canActivate: [SecureInnerPagesGuard] },
-  {path: '**', component: DashboardComponent, canActivate: [SecureInnerPagesGuard] }  // If no matching route found, go back to dashboard route
+  { path: 'sign-in', component: SignInComponent, canActivate: [SecureInnerPagesGuard,AdminGuard]},
+  {path:  'log-in', component:LogInComponent, canActivate:[SecureInnerPagesGuard,AdminGuard],},
+  { path: 'register-user', component: SignUpComponent, canActivate: [SecureInnerPagesGuard,AdminGuard]},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'user-profile', component: UserProfileComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'verify-email-address', component: VerifyEmailComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'add-lecturer-checkin', component: AddLecturerCheckinComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'edit-lecturer-checkin/:id', component: EditLecturerCheckinComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'view-lecturer-checkin/:id', component: LecturerCheckinViewComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  { path: 'view-lecturer-checkins', component: LecturerCheckinListComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] },
+  {path: '**', component: DashboardComponent, canActivate: [SecureInnerPagesGuard,AdminGuard] }  // If no matching route found, go back to dashboard route
 ];
 
 @NgModule({

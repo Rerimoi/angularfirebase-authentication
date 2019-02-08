@@ -8,9 +8,9 @@ export interface User {
 }
 
 export interface Roles {
-   Student: boolean;
-   Admin: boolean;
-   Lecturer: boolean;
-}
+   Student?: boolean;
+   Admin?: boolean;
+   Lecturer?: boolean;
+} 
 
 // it should help fetch data in user-profile component

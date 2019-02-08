@@ -1,18 +1,20 @@
-import { Injectable, NgZone } from '@angular/core';
+import * as core from '@angular/core';
 import { User, Roles} from '../models/user';
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 
-@Injectable({
+@core.Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
-
+  [x: string]: any;
+user$:Observable<User>;
    userData:any; // Save logged in user data
   
 
@@ -20,13 +22,27 @@ export class AuthService {
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: core.NgZone // NgZone service to remove outside scope warning
 
     
   ) 
   
   
   {
+    //get auth data, then get firestore user document //null
+
+    // this.user$ = this.afAuth.authState
+    // .switchMap(user=> {
+    //   if(user){
+    //     return this.afs.doc<User>('users/${user.uid}').valueChanges()
+    //   } else{
+    //     return Observable.of(null)
+    //   }
+    // })
+
+
+
+
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
     this.afAuth.authState.subscribe(user => {
@@ -75,10 +91,56 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         this.SetUserData(result.user);
+        this.updateUserData(result.user)
       }).catch((error) => {
         window.alert(error.message);
       })
   }
+private updateUserData(user){
+  //sets user data to firestore on login
+  const userRef: AngularFirestoreDocument<any>=this.afs.doc('users/$(user.uid');
+  const data:User={
+    uid:user.uid,
+    displayName:user.displayName,
+    email:user.email,
+    emailVerified:user.emailVerified,
+    roles: {
+      Lecturer:true
+    }
+  }
+  return userRef.set(data, {merge:true})
+}
+
+//determines if user has matching roles
+private checkAuthorization(user:User,allowedRoles: string[]): boolean{
+  if(!user) return false
+  for(const role of allowedRoles){
+    if(user.roles[role]){
+      return true
+
+    }
+  }
+return false
+}
+
+//role authorization
+canAddlecturercheckin(_user:User): boolean {
+const allowed=['lecturer']
+return this.checkAuthorization(_user,allowed)
+}
+canEditLecturercheckin(_user:User): boolean {
+  const allowed=['lecturer']
+  return this.checkAuthorization(_user,allowed)
+  }
+  canDeleteCheckin(_user:User): boolean {
+    const allowed=['lecturer']
+    return this.checkAuthorization(_user,allowed)
+    }
+  canViewlecturercheckin(_user:User): boolean {
+      const allowed=['student']
+      return this.checkAuthorization(_user,allowed)
+      }
+
 
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
@@ -141,7 +203,7 @@ export class AuthService {
       roles: {
       
         Student: null,
-        Admin: null,
+        Admin: null, 
         Lecturer: null
       }
     };
@@ -160,43 +222,43 @@ export class AuthService {
 
 
 
-  isLecturer(user: User): boolean {
-    const allowed = ['Admin', 'Lecturer','Student'];
-    return this.checkAuthorization(user, allowed);
-  }
+//   isLecturer(user: User): boolean {
+//     const allowed = ['Admin', 'Lecturer','Student'];
+//     return this.checkAuthorization(user, allowed);
+//   }
 
-  canCreateClassCheckin(user: User): boolean {
-    const allowed = ['Admin', 'Lecturer'];
-    return this.checkAuthorization(user, allowed);
-  }
+//   canCreateClassCheckin(user: User): boolean {
+//     const allowed = ['Admin', 'Lecturer'];
+//     return this.checkAuthorization(user, allowed);
+//   }
 
-  canCreateStudentCheckin(user: User): boolean {
-    const allowed = ['Admin', 'Lecturer'];
-    return this.checkAuthorization(user, allowed);
-  }
+//   canCreateStudentCheckin(user: User): boolean {
+//     const allowed = ['Admin', 'Lecturer'];
+//     return this.checkAuthorization(user, allowed);
+//   }
 
-  canReadStudentCheckin(user: User): boolean {
-    const allowed = ['Lecturer', 'Admin', 'Student'];
-    return this.checkAuthorization(user, allowed);
-  }
+//   canReadStudentCheckin(user: User): boolean {
+//     const allowed = ['Lecturer', 'Admin', 'Student'];
+//     return this.checkAuthorization(user, allowed);
+//   }
 
-  canDeleteClassCheckin(user: User): boolean {
-    const allowed = ['Admin', 'Lecturer'];
-    return this.checkAuthorization(user, allowed);
-  }
+//   canDeleteClassCheckin(user: User): boolean {
+//     const allowed = ['Admin', 'Lecturer'];
+//     return this.checkAuthorization(user, allowed);
+//   }
 
 
-  // determines if user has matching role
-  private checkAuthorization(user: User, Roles: string[]): boolean {
-    if (!user) { return false; }
-    for (const role of Roles) {
-      if (user.roles[role]) {
-        return true;
-      }
-    }
-    return false;
-  }
-}
+//   // determines if user has matching role
+//   private checkAuthorization(user: User, Roles: string[]): boolean {
+//     if (!user) { return false; }
+//     for (const role of Roles) {
+//       if (user.roles[role]) {
+//         return true;
+//       }
+//     }
+//     return false;
+//   }
+// }
 
 //   match /posts/{document} {
 
@@ -224,5 +286,4 @@ export class AuthService {
 
   
  
-
-
+}
